@@ -1,0 +1,35 @@
+{
+  "name": "ponyshow-web-client",
+  "version": "1.0.0",
+  "description": "Ponyshow JS/CSS web client",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ponyshow/web-client.git"
+  },
+  "keywords": [
+    "Ponyshow",
+    "browser",
+    "js"
+  ],
+  "author": "TZ Martin <martin@semanticpress.com> (http://www.semanticpress.com)",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/Ponyshow/web-client/issues"
+  },
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-header": "^1.2.2",
+    "gulp-inject": "^1.3.1",
+    "gulp-jshint": "^1.11.2",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0"
+  }
+}
