@@ -2,7 +2,16 @@
 
 Web client for Ponyshow presentations.  Download the [app](http://www.semanticpress.com/ponyshow) or install the [CLI](http://github.com/ponyshow/ponyshow-cli).
 
-## To Run
+This client is required for viewing Ponyshow markdown files.
+
+## Hosted CDN
+
+You can access the latest version of the client here: 
+
+- CSS: [http://cdn.jsdelivr.net/ponyshow-web-client/latest/css/main.css](http://cdn.jsdelivr.net/ponyshow-web-client/latest/js/main.js)
+- JS: [http://cdn.jsdelivr.net/ponyshow-web-client/latest/js/main.js](http://cdn.jsdelivr.net/ponyshow-web-client/latest/js/main.js)
+
+## To Compile
 
 1. Install dependencies ```npm install```
 2. Run ```gulp```
