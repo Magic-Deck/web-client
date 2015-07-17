@@ -1,6 +1,6 @@
 # Ponyshow Web Client
 
-Web client for Ponyshow presentations.  Download the [app](http://www.semanticpress.com/ponyshow) or install the [CLI](http://github.com/ponyshow/ponyshow-cli).
+Web client for Ponyshow presentations.  Download the [app](http://www.semanticpress.com/ponyshow) or install the [command line tool](http://github.com/ponyshow/ponyshow).
 
 This client is required for viewing Ponyshow markdown files.
 
