@@ -76,7 +76,7 @@ Get value at named data store for the DOM element.
 
 Shower initialization
 
-- `run()`
+##### `run()`
 
 Run shower by going to slide and entering slide mode if needed.
 
@@ -188,9 +188,10 @@ If you contribute code to this project, you are implicitly allowing your code
 to be distributed under the Apache 2 license. You are also implicitly verifying that
 all code is your original work. `</legalese>`
 
-## Author
+## Authors
 
-TZ Martin <martin@semanticpress.com>
+- TZ Martin <martin@semanticpress.com>
+- Vadim Makeev, http://pepelsbey.net
 
 ## License
 
