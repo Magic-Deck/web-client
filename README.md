@@ -58,7 +58,9 @@ Get slide id from HTML element.
 
 Normalize slide number.
 
-##### `_isNumber()`: Check if arg is number.
+##### `_isNumber()`
+
+Check if arg is number.
 
 ##### `_applyTransform(<string> transform)`
 
@@ -74,33 +76,67 @@ Get value at named data store for the DOM element.
 
 ##### `init(<string> slideSelector, <string> progressSelector)`
 
-Shower initialization
+Shower initialization.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `run()`
 
 Run shower by going to slide and entering slide mode if needed.
 
+```javascript
+
+```
+
 ##### `go(<integer> slideNumber, <function> callback)`
 
 Go to slide number.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `next()`
 
 Show next slide or show next Inner navigation item.
 
-Returns false on a last slide, otherwise returns shower.
+**Returns**: false on a last slide, otherwise returns shower.
+
+```javascript
+
+```
 
 ##### `prev()`
 
 Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `getSlideNumber(<string> slideId)`
 
 Get slide number by slideId (string).
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `getSlideHash(<integer> slideNumber)`
 
 Get slide hash.
+
+**Returns**:
 
 ```javascript
 
@@ -110,49 +146,121 @@ Get slide hash.
 
 Clear presenter notes in console (only for Slide Mode).
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `updateActiveAndVisitedSlides(<integer> slideNumber)`
 
 Update active and visited slides.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `updateProgress(<integer> slideNumber)`
 
 Update progress bar.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `isSlideMode()`
 
 Check if it's Slide mode.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `isListMode()`
 
 Check if it's List mode.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `scrollToSlide(<integer> slideNumber)`
 
 Scroll to slide.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `getCurrentSlideNumber()`
 
 Get current slide number. Starts from zero. Warning: when you have slide number 1 in URL this method will return 0. If there is no slide number in url, AND slide does not exist, return -1.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `toggleMode(<function> callback)`
 
 Toggle Mode: Slide and List.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `enterListMode(<function> callback)`
 
 Switch to list view.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `enterSlideMode(<function> callback)`
 
 Switch to slide view.
+
+**Returns**:
+
+```javascript
+
+```
 
 ##### `last(<function> callback)`
 
 Show last slide.
 
+**Returns**:
+
+```javascript
+
+```
+
 ##### `first(<function> callback)`
   
 Show first slide.
+
+**Returns**:
+
+```javascript
+
+```
 
 ### Document events
 
