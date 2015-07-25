@@ -21,7 +21,7 @@ function fireEvent(_msg) {
   }
 }
 
-function isElementInViewport (el) {
+function isElementInViewport(el) {
     var rect = el.getBoundingClientRect();
     return (
         rect.top >= 0 &&
@@ -40,18 +40,19 @@ function getPosition(e) {
   return {
     x: e.clientX,
     y: e.clientY
-  }
+  };
 }
 
 
 window.onerror = function(errorMsg, url, lineNumber) {
+  console.log(url);
   var str = errorMsg + ' Script: ' + url + ' Line: ' + lineNumber;
   if (window.hasOwnProperty('postMessageToHost')) {
     window.postMessageToHost(JSON.stringify({event:'WKWebViewError',data:str}));
   } else {
     console.log(str);
   }
-}
+};
 
 var exampleSocket = new WebSocket("ws://127.0.0.1:8081");
 exampleSocket.onmessage = function (event) {
