@@ -20,57 +20,85 @@ Compiled version is in the ```dist``` folder.
 
 # API
 
-### `shower`
+## `shower`
 
-#### Properties
+### Properties
 
 - `debugMode`: boolean
 
-#### Methods
+### Methods
 
-##### Private Methods
+#### Private Methods
 
-- `_getSlideTitle(<integer> slideNumber)`: Get slide title by number.
-- `showPresenterNotes(<integer> slideNumber)`: Show presenter notes in console.
-- `_turnPreviousSlide()`: Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
-- `_turnNextSlide()`: 
-- `_checkInteractiveElement()`: For touch devices: check if link is clicked.
-- `_getSlideIdByEl()`: Get slide id from HTML element.
-- `_normalizeSlideNumber(<integer> slideNumber)`: Normalize slide number.
-- `_isNumber()`: Check if arg is number.
-- `_applyTransform(<string> transform)`: Set CSS transform with prefixes to body.
-- `_getTransform()`: Get slide scale value.
-- `_getData(<HTMLElement> element, <string> name)`: Get value at named data store for the DOM element.
+##### `_getSlideTitle(<integer> slideNumber)`
 
-##### Public Methods
+Get slide title by number.
+  
+##### `showPresenterNotes(<integer> slideNumber)`
 
-- `init(<string> slideSelector, <string> progressSelector)`: 
+Show presenter notes in console.
+
+##### `_turnPreviousSlide()`
+
+Show previous slide. 
+
+Returns false on a first slide, otherwise returns shown slide number.
+
+##### `_turnNextSlide()`
+
+##### `_checkInteractiveElement()`
+
+For touch devices: check if link is clicked.
+
+##### `_getSlideIdByEl()`
+
+Get slide id from HTML element.
+
+##### `_normalizeSlideNumber(<integer> slideNumber)`
+
+Normalize slide number.
+
+##### `_isNumber()`: Check if arg is number.
+
+##### `_applyTransform(<string> transform)`
+
+Set CSS transform with prefixes to body.
+
+##### `_getTransform()`: Get slide scale value.
+
+##### `_getData(<HTMLElement> element, <string> name)`
+
+Get value at named data store for the DOM element.
+
+#### Public Methods
+
+##### `init(<string> slideSelector, <string> progressSelector)`
 
 Shower initialization
 
-- `run()`: 
+- `run()`
 
 Run shower by going to slide and entering slide mode if needed.
 
-- `go(<integer> slideNumber, <function> callback)`:
+##### `go(<integer> slideNumber, <function> callback)`
 
 Go to slide number.
 
-- `next()`:
+##### `next()`
 
 Show next slide or show next Inner navigation item.
 
 Returns false on a last slide, otherwise returns shower.
 
-- `prev()`:
+##### `prev()`
 
 Show previous slide. Returns false on a first slide, otherwise returns shown slide number.
 
-- `getSlideNumber(<string> slideId)`
+##### `getSlideNumber(<string> slideId)`
 
 Get slide number by slideId (string).
 
-- `getSlideHash(<integer> slideNumber)`:
+##### `getSlideHash(<integer> slideNumber)`
 
 Get slide hash.
 
@@ -78,51 +106,51 @@ Get slide hash.
 
 ```
 
-- `clearPresenterNotes()`:
+##### `clearPresenterNotes()`
 
 Clear presenter notes in console (only for Slide Mode).
 
-- `updateActiveAndVisitedSlides(<integer> slideNumber)`:
+##### `updateActiveAndVisitedSlides(<integer> slideNumber)`
 
 Update active and visited slides.
 
-- `updateProgress(<integer> slideNumber)`
+##### `updateProgress(<integer> slideNumber)`
 
 Update progress bar.
 
-- `isSlideMode()`
+##### `isSlideMode()`
 
 Check if it's Slide mode.
 
-- `isListMode()`
+##### `isListMode()`
 
 Check if it's List mode.
 
-- `scrollToSlide(<integer> slideNumber)`
+##### `scrollToSlide(<integer> slideNumber)`
 
 Scroll to slide.
 
-- `getCurrentSlideNumber()`
+##### `getCurrentSlideNumber()`
 
 Get current slide number. Starts from zero. Warning: when you have slide number 1 in URL this method will return 0. If there is no slide number in url, AND slide does not exist, return -1.
 
-- `toggleMode(<function> callback)`
+##### `toggleMode(<function> callback)`
 
 Toggle Mode: Slide and List.
 
-- `enterListMode(<function> callback)`
+##### `enterListMode(<function> callback)`
 
 Switch to list view.
 
-- `enterSlideMode(<function> callback)`
+##### `enterSlideMode(<function> callback)`
 
 Switch to slide view.
 
-- `last(<function> callback)`
+##### `last(<function> callback)`
 
 Show last slide.
 
-- `first(<function> callback)`
+##### `first(<function> callback)`
   
 Show first slide.
 
