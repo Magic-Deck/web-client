@@ -41,7 +41,7 @@ gulp.task('clean-html', function () {
 
 */
 gulp.task('minify-css', function () {
-  gulp.src(['src/css/prism.css'])
+  gulp.src(['src/css/app.css','src/css/prism.css'])
     .pipe(sourcemaps.init())
     .pipe(minifyCss({keepBreaks:false}))
     .pipe(concat('main.css'))
