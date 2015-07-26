@@ -33,7 +33,7 @@ button:focus {
 	Smooth fading in between slides: 
 	add "fade" class to <html>
 */
-.fade .full section.slide {
+.fade .full section.slide > div:first-of-type {
 	-webkit-transition: opacity 1s;
 		 -moz-transition: opacity 1s;
 	    -ms-transition: opacity 1s;
@@ -41,6 +41,6 @@ button:focus {
 	        transition: opacity 1s;
   opacity: 0;
 }
-.fade .full section.slide:target { 
+.fade .full section.slide > div:target { 
 	opacity: 1; 
 }
