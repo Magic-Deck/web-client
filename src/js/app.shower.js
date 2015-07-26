@@ -6,7 +6,7 @@
  * https://github.com/shower/core
  */
 
-if ( ! (window.shower && window.shower.init)) {
+if ( ! (window.shower)) {
 
 window.shower = (function(window, document, undefined) {
 	var shower = {},
@@ -201,7 +201,7 @@ window.shower = (function(window, document, undefined) {
 
 		if (shower.debugMode) {
 			document.body.classList.add('debug');
-			console.log('Debug mode on')
+			console.log('Debug mode on');
 		}
 
 		slideSelector = slideSelector || '.slide';
@@ -226,7 +226,18 @@ window.shower = (function(window, document, undefined) {
 			if ( ! slides[i].id) {
 				slides[i].id = i + 1;
 			}
-
+			
+			// transform lists into multiple columns if any child is hidden
+			if (slides[i].getElementsByTagName("ul").length > 0) {
+			  var el = slides[i].getElementsByTagName("ul")[0].lastChild.previousSibling;
+			  
+			  if (!el.isVisible()) {
+			    el.parentElement.style['-webkit-columns'] = 2;
+			    console.log(el.parentElement);
+			  }  
+			}
+      
+      // get timer
 			timing = shower._getData(slides[i], 'timing');
 
 			// Parsing timing in [S] or [M:S] format
@@ -920,17 +931,12 @@ window.shower = (function(window, document, undefined) {
 		} else if (currentSlideNumber === -1 && url.hash !== '') {
 			shower.go(0);
 		}
-		
-		if (isSlideMode) {
-		  showEditorPanelButton(false);
-		}
 
 	}, false);
 
 	window.addEventListener('resize', function() {
 		if (shower.isSlideMode()) {
 			shower._applyTransform(shower._getTransform());
-			showEditorPanelButton(false);
 		}
 	}, false);
 
@@ -996,7 +1002,7 @@ window.shower = (function(window, document, undefined) {
 
   					slide.timing && slide.initTimer(shower);
   				} else {
-  				  fireEvent({event:"unknwn",data:""});
+  				  fireEvent({event:"unknown",data:""});
   				}
 			  }
 			break;

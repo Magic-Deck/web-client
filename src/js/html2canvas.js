@@ -150,7 +150,7 @@
     }
 
     function $$$internal$$cannotReturnOwn() {
-      return new TypeError('A promises callback cannot return that same promise.')
+      return new TypeError('A promises callback cannot return that same promise.');
     }
 
     function $$$internal$$getThen(promise) {
@@ -967,7 +967,7 @@
       this['ES6Promise'] = es6$promise$umd$$ES6Promise;
     }
 }).call(this);
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
 },{"_process":2}],2:[function(require,module,exports){
 // shim for using process in browser
 
@@ -1021,7 +1021,7 @@ process.binding = function (name) {
 };
 
 // TODO(shtylman)
-process.cwd = function () { return '/' };
+process.cwd = function () { return '/'; };
 process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
@@ -1537,7 +1537,7 @@ process.umask = function() { return 0; };
 
 }(this));
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
 },{}],4:[function(require,module,exports){
 var log = require('./log');
 var Promise = require('./promise');
@@ -4515,5 +4515,5 @@ function XHR(url) {
 
 module.exports = XHR;
 
-},{"./promise":18}]},{},[6])(6)
+},{"./promise":18}]},{},[6])(6);
 });
