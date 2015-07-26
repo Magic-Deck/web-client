@@ -293,16 +293,16 @@ window.shower = (function(window, document, undefined) {
 	shower._optimizeColumns = function(el) {
 	  	  
 	  // transform lists into multiple columns if any child is hidden
-	  var s = slides[el.number].getElementsByTagName("ul");
-		if (s.length > 0) {
-		  // get previous LI
-		  var prev = s[0].lastChild.previousSibling;
-		  if (!prev.isVisible()) {
-		    prev.parentElement.style['-webkit-columns'] = 2;
-		  } else {
-		    prev.parentElement.style['-webkit-columns'] = 1;
-		  }
-		}
+    //    var s = slides[el.number].getElementsByTagName("ul");
+    // if (s.length > 0) {
+    //   // get previous LI
+    //   var prev = s[0].lastChild.previousSibling;
+    //   if (!prev.isVisible()) {
+    //     prev.parentElement.style['-webkit-columns'] = 2;
+    //   } else {
+    //     prev.parentElement.style['-webkit-columns'] = 1;
+    //   }
+    // }
 		
 	}
 
