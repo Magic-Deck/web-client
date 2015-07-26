@@ -66,13 +66,22 @@ exampleSocket.onmessage = function (event) {
   }
 };
 
-HTMLElement.prototype.pseudoStyle = function(element,prop,value){
+// this is used for dynamic styling purposes
+var pseudoID = {
+	_current: 0,
+	getNew: function(){
+		this._current++;
+		return this._current;
+	}
+};
+
+HTMLElement.prototype.pseudoStyle = function(element,prop,value) {
 	var _this = this;
 	var _sheetId = "pseudoStyles";
 	var _head = document.head || document.getElementsByTagName('head')[0];
 	var _sheet = document.getElementById(_sheetId) || document.createElement('style');
 	_sheet.id = _sheetId;
-	var className = "pseudoStyle" + UID.getNew();
+	var className = "pseudoStyle" + pseudoID.getNew();
 	
 	_this.className +=  " "+className; 
 	
