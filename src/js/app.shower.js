@@ -293,10 +293,10 @@ window.shower = (function(window, document, undefined) {
 	shower._optimizeColumns = function(el) {
 	  	  
 	  // transform lists into multiple columns if any child is hidden
-		if (slides[el.number].getElementsByTagName("ul").length > 0) {
-		  // get 
-		  var prev = slides[i].getElementsByTagName("ul")[0].lastChild.previousSibling;
-		  
+	  var slide = slides[el.number].getElementsByTagName("ul");
+		if (slide.length > 0) {
+		  // get previous LI
+		  var prev = slide.lastChild.previousSibling;
 		  if (!prev.isVisible()) {
 		    prev.parentElement.style['-webkit-columns'] = 2;
 		  } else {
