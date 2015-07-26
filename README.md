@@ -18,7 +18,11 @@ You can access the latest version of the client here:
 
 Compiled version is in the ```dist``` folder.
 
-# API
+# CSS API
+
+`.fade`: Smooth fading in between slides
+
+# JS API
 
 ## `shower`
 
@@ -71,6 +75,10 @@ Set CSS transform with prefixes to body.
 ##### `_getData(<HTMLElement> element, <string> name)`
 
 Get value at named data store for the DOM element.
+
+##### `_optimizeColumns()`
+
+Dynamically set the column size based on the true visibility of list items overflow state
 
 #### Public Methods
 

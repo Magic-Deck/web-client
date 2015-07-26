@@ -28,3 +28,16 @@ button:focus {
   -ms-user-select: none;
   user-select: none;
 }
+
+/* 
+	Smooth fading in between slides: 
+	add "fade" class to <html>
+*/
+.fade .full .slide section {
+	-webkit-transition: opacity 1s;
+		 -moz-transition: opacity 1s;
+	    -ms-transition: opacity 1s;
+       -o-transition: opacity 1s;
+	        transition: opacity 1s;
+  opacity: 0;
+}
