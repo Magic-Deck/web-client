@@ -1,6 +1,4 @@
-*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 body, html { font-size: 100%; font-family:'Helvetica'; padding: 0; margin: 0;height: 100%;}
-body {height: auto;min-height: 100%;}
 * {
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -41,6 +39,6 @@ button:focus {
 	        transition: opacity 1s;
   opacity: 0;
 }
-.fade .full section.slide > div:target { 
+.fade .full section.slide > div:first-of-type:target { 
 	opacity: 1; 
 }
