@@ -41,3 +41,6 @@ button:focus {
 	        transition: opacity 1s;
   opacity: 0;
 }
+.fade .full section.slide:target { 
+	opacity: 1; 
+}
