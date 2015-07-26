@@ -286,16 +286,14 @@ window.shower = (function(window, document, undefined) {
 	};
 	
 	/**
-	* Sets column number based on true visibility of list items based on overflow state
+	* Dynamically set the column size based on the true visibility of list items overflow state
 	* @private HTML element (slide)
 	* @returns
 	*/
 	shower._optimizeColumns = function(el) {
-	  
-	  console.log('Optimizing columns');
-	  
+	  	  
 	  // transform lists into multiple columns if any child is hidden
-		if (el.getElementsByTagName("ul").length > 0) {
+		if (slides[el.number].getElementsByTagName("ul").length > 0) {
 		  // get 
 		  var prev = slides[i].getElementsByTagName("ul")[0].lastChild.previousSibling;
 		  
