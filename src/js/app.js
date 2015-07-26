@@ -83,8 +83,6 @@ HTMLElement.prototype.pseudoStyle = function(element,prop,value) {
 	_sheet.id = _sheetId;
 	var className = "pseudoStyle" + pseudoID.getNew();
 	
-	_this.className +=  " "+className; 
-	
 	_sheet.innerHTML += "\n."+className+":"+element+"{"+prop+":"+value+"}";
 	_head.appendChild(_sheet);
 	return this;

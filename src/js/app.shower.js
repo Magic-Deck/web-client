@@ -226,16 +226,6 @@ window.shower = (function(window, document, undefined) {
 			if ( ! slides[i].id) {
 				slides[i].id = i + 1;
 			}
-			
-			// transform lists into multiple columns if any child is hidden
-			if (slides[i].getElementsByTagName("ul").length > 0) {
-			  var el = slides[i].getElementsByTagName("ul")[0].lastChild.previousSibling;
-			  
-			  if (!el.isVisible()) {
-			    el.parentElement.style['-webkit-columns'] = 2;
-			    console.log(el.parentElement);
-			  }  
-			}
       
       // get timer
 			timing = shower._getData(slides[i], 'timing');
@@ -287,13 +277,36 @@ window.shower = (function(window, document, undefined) {
 
 		// If slide number is OK, got for it.
 		if (currentSlideNumber >= 0) {
-            shower.go(currentSlideNumber);
-        }
+      shower.go(currentSlideNumber);
+    }
 
 		if (isSlideMode) {
 			shower.enterSlideMode();
 		}
 	};
+	
+	/**
+	* Sets column number based on true visibility of list items based on overflow state
+	* @private HTML element (slide)
+	* @returns
+	*/
+	shower._optimizeColumns = function(el) {
+	  
+	  console.log('Optimizing columns');
+	  
+	  // transform lists into multiple columns if any child is hidden
+		if (el.getElementsByTagName("ul").length > 0) {
+		  // get 
+		  var prev = slides[i].getElementsByTagName("ul")[0].lastChild.previousSibling;
+		  
+		  if (!prev.isVisible()) {
+		    prev.parentElement.style['-webkit-columns'] = 2;
+		  } else {
+		    prev.parentElement.style['-webkit-columns'] = 1;
+		  }
+		}
+		
+	}
 
 	/**
 	* Get slide scale value.
@@ -463,6 +476,8 @@ window.shower = (function(window, document, undefined) {
 			if (slide.timing) {
 				slide.initTimer(shower);
 			}
+			
+			shower._optimizeColumns(slide);
 		}
 
 		if (typeof(callback) === 'function') {
