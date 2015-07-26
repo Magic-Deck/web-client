@@ -404,6 +404,24 @@ window.shower = (function(window, document, undefined) {
 
 		return slideNumber;
 	};
+  
+  /**
+	 * Hide/show slide number globally
+	 * @param 
+	 * @returns
+	 */
+  shower.toggleSlideNumber = function() {
+    
+    var el = document.querySelector('section');
+    var state = window.getComputedStyle(el, ':after').getPropertyValue('display');
+    
+    if (state == "none") {
+      el.pseudoStyle("after","display","none");
+    } else {
+      el.pseudoStyle("after","display","block");
+    }
+
+  }
 
 	/**
 	* Go to slide number.
