@@ -20,6 +20,9 @@ window.shower = (function(window, document, undefined) {
 
 	// Shower debug mode env, could be overridden before shower.init
 	shower.debugMode = false;
+	
+	// Set disabled keys (if any). Setting any key value will always be true. Delete the key when done.
+	shower.disabledKeys = {};
 
 	/**
 	 * Slide constructor
@@ -604,6 +607,23 @@ window.shower = (function(window, document, undefined) {
 			callback();
 		}
 	};
+	
+	/**
+	* Enable key event - deletes a key from disabledKeys
+	* @param {string}
+	*/
+	shower.disableKey = function(_key) {
+		delete shower.disabledKeys[_key];
+	};
+	
+	/**
+	* Disable key event
+	* @param {string}
+	*/
+	shower.disableKey = function(_key) {
+		shower.disabledKeys[_key] = true;
+	};
+	
 
 	/**
 	* Switch to slide view.
@@ -958,19 +978,21 @@ window.shower = (function(window, document, undefined) {
 			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
 			slideNumber;
     
-    fireEvent({event:'keydown',data:e.which});
+    	fireEvent({event:'keydown',data:e.which});
     
 		switch (e.which) {
 		  
 		  case 81: // Q
 		    e.preventDefault();
-	      e.stopPropagation();
+	      	e.stopPropagation();
+			if (shower.disabledKeys.hasOwnProperty['81']) { break; }
 		    if (e.metaKey) {
 		      fireEvent({event:'exitApp',data:"Cmd+Q"});
 		    }
 		  break;
 		  
 			case 80: // P Alt Cmd
+				if (shower.disabledKeys.hasOwnProperty['80']) { break; }
 				if (shower.isListMode() && e.altKey && e.metaKey) {
 					e.preventDefault();
 
@@ -986,6 +1008,7 @@ window.shower = (function(window, document, undefined) {
 
 			case 116: // F5 (Shift)
 				e.preventDefault();
+				if (shower.disabledKeys.hasOwnProperty['116']) { break; }
 				if (shower.isListMode()) {
 					slideNumber = e.shiftKey ? slide.number : 0;
 
@@ -1003,6 +1026,8 @@ window.shower = (function(window, document, undefined) {
 			
 			  e.preventDefault();
 			  
+			  if (shower.disabledKeys.hasOwnProperty['13']) { break; }
+			
 			  if (e.metaKey && shower.isSlideMode()) {
 			    
 			    fireEvent({event:"setWindowState",data:"fullscreen"});
@@ -1020,7 +1045,8 @@ window.shower = (function(window, document, undefined) {
 			  }
 			break;
 
-			case 27: // Esc
+			case 27: // Esc				
+				if (shower.disabledKeys.hasOwnProperty['27']) { break; }
 				if (shower.isSlideMode()) {
 					e.preventDefault();
 					shower.enterListMode();
@@ -1034,6 +1060,7 @@ window.shower = (function(window, document, undefined) {
 			case 72: // H
 			case 75: // K
 				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+				if (shower.disabledKeys.hasOwnProperty['75']) { break; }
 				e.preventDefault();
 				shower._turnPreviousSlide();
 			break;
@@ -1044,29 +1071,34 @@ window.shower = (function(window, document, undefined) {
 			case 76: // L
 			case 74: // J
 				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+				if (shower.disabledKeys.hasOwnProperty['74']) { break; }
 				e.preventDefault();
 				shower._turnNextSlide();
 			break;
 
 			case 36: // Home
 				e.preventDefault();
+				if (shower.disabledKeys.hasOwnProperty['36']) { break; }
 				shower.first();
 			break;
 
 			case 35: // End
 				e.preventDefault();
+				if (shower.disabledKeys.hasOwnProperty['35']) { break; }
 				shower.last();
 			break;
 
 			case 9: // Tab (Shift)
 			case 32: // Space (Shift)
 				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
+				if (shower.disabledKeys.hasOwnProperty['32']) { break; }
 				e.preventDefault();
 				shower[e.shiftKey ? '_turnPreviousSlide' : '_turnNextSlide']();
 			break;
 			
 			case 78: // Cmd + n
 			  e.preventDefault();
+			  if (shower.disabledKeys.hasOwnProperty['78']) { break; }
 			  if (e.altKey || e.ctrlKey || e.metaKey) {
 			    fireEvent({event:'newFile',data:'presentation'});
 			  }
@@ -1074,6 +1106,7 @@ window.shower = (function(window, document, undefined) {
 			
 			case 219: // Cmd + [
 			  e.preventDefault();
+			  if (shower.disabledKeys.hasOwnProperty['219']) { break; }
 			  if (e.altKey || e.ctrlKey || e.metaKey) {
 			    fireEvent({event:'editorPanelButton',data:'['});
 			  }
@@ -1081,6 +1114,7 @@ window.shower = (function(window, document, undefined) {
 			
 			case 221: // Cmd + ]
 			  e.preventDefault();
+			  if (shower.disabledKeys.hasOwnProperty['221']) { break; }
 			  if (e.altKey || e.ctrlKey || e.metaKey) {
 			    fireEvent({event:'editorPanelButton',data:']'});
 			  }
