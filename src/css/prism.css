@@ -1,4 +1,4 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript */
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+bash+c+git+go+java+markdown+objectivec+python+swift&plugins=line-numbers+show-invisibles+autolinker+wpd+show-language+highlight-keywords */
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -9,7 +9,7 @@ code[class*="language-"],
 pre[class*="language-"] {
 	color: black;
 	text-shadow: 0 1px white;
-	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	direction: ltr;
 	text-align: left;
 	white-space: pre;
@@ -55,7 +55,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: transparent;
+	background: #f5f2f0;
 }
 
 /* Inline code */
@@ -68,7 +68,7 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #bfbfbf;
+	color: slategray;
 }
 
 .token.punctuation {
@@ -95,7 +95,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #009900;
+	color: #690;
 }
 
 .token.operator,
@@ -104,16 +104,17 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string {
 	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-	color: blue;
+	color: #07a;
 }
 
 .token.function {
-	color: blue;
+	color: #DD4A68;
 }
 
 .token.regex,
@@ -134,3 +135,94 @@ pre[class*="language-"] {
 	cursor: help;
 }
 
+pre.line-numbers {
+	position: relative;
+	padding-left: 3.8em;
+	counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+	position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+	position: absolute;
+	pointer-events: none;
+	top: 0;
+	font-size: 100%;
+	left: -3.8em;
+	width: 3em; /* works for line-numbers below 1000 lines */
+	letter-spacing: -1px;
+	border-right: 1px solid #999;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+}
+
+	.line-numbers-rows > span {
+		pointer-events: none;
+		display: block;
+		counter-increment: linenumber;
+	}
+
+		.line-numbers-rows > span:before {
+			content: counter(linenumber);
+			color: #999;
+			display: block;
+			padding-right: 0.8em;
+			text-align: right;
+		}
+.token.tab:not(:empty):before,
+.token.cr:before,
+.token.lf:before {
+	color: hsl(24, 20%, 85%);
+}
+
+.token.tab:not(:empty):before {
+    content: '\21E5';
+}
+
+.token.cr:before {
+    content: '\240D';
+}
+
+.token.crlf:before {
+    content: '\240D\240A';
+}
+.token.lf:before {
+    content: '\240A';
+}
+
+.token a {
+	color: inherit;
+}
+code[class*="language-"] a[href],
+pre[class*="language-"] a[href] {
+	cursor: help;
+	text-decoration: none;
+}
+
+code[class*="language-"] a[href]:hover,
+pre[class*="language-"] a[href]:hover {
+	cursor: help;
+	text-decoration: underline;
+}
+pre[class*='language-'] {
+	position: relative;
+}
+pre[class*='language-'][data-language]::before {
+	content: attr(data-language);
+	color: black;
+	background-color: #CFCFCF;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+}
