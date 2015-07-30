@@ -919,66 +919,32 @@ window.shower = (function(window, document, undefined) {
 
 		return '#' + shower.slideList[slideNumber].id;
 	};
+	
+	/**
+	* Remove Window event
+	* @param {string} event name
+	* @returns 
+	*/
+	shower.removeEventListener = function(evt) {
+		//keydown, click, touchstart
+		document.removeEventListener(evt,Events[evt],false);
+	}
 
 	// For overriding shower properties before init
 	for (var overridingProp in window.shower) {
 		shower[overridingProp] = window.shower[overridingProp];
 	}
-
+	
 	// Event handlers
-	window.addEventListener('DOMContentLoaded', function() {
-		shower.
-			init().
-			run();
-			
-			var els = document.getElementsByTagName("img");
-			console.log(els.length);
-			for (var i=0; i < els.length; ++i) {
-			  els[i].addEventListener("error", function(){
-			    console.log('YES');
-			    this.setAttribute("class", "noImg");
-  			  this.alt = 'Broken image';
-			  });
-		  }      
-      
-	}, false);
-
-	window.addEventListener('popstate', function() {
-	  
-		var currentSlideNumber = shower.getCurrentSlideNumber(),
-			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
-
-		if (shower._getSlideTitle(currentSlideNumber)) {
-			document.title = shower._getSlideTitle(currentSlideNumber) + ' — ' + presentationTitle;
-		} else {
-			document.title = presentationTitle;
-		}
-
-		// Go to first slide, if hash id is invalid or isn't set.
-		// Same check is located in DOMContentLoaded event,
-		// but it not fires on hash change
-		if (isSlideMode && currentSlideNumber === -1) {
-			shower.go(0);
-
-		// In List mode, go to first slide only if hash id is invalid.
-		} else if (currentSlideNumber === -1 && url.hash !== '') {
-			shower.go(0);
-		}
-
-	}, false);
-
-	window.addEventListener('resize', function() {
-		if (shower.isSlideMode()) {
-			shower._applyTransform(shower._getTransform());
-		}
-	}, false);
-
-	document.addEventListener('keydown', function(e) {
+	var Events = {};
+	Events.keydown = function (e) {
+		if (false) {return false;}
+		
 		var currentSlideNumber = shower.getCurrentSlideNumber(),
 			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
 			slideNumber;
     
-    	fireEvent({event:'keydown',data:e.which});
+    	//fireEvent({event:'keydown',data:e.which});
     
 		switch (e.which) {
 		  
@@ -1124,9 +1090,52 @@ window.shower = (function(window, document, undefined) {
 			default:
 				// Behave as usual
 		}
-	}, false);
+	}
+	Events.DOMContentLoaded = function() {
+		shower.
+			init().
+			run();
+			
+			var els = document.getElementsByTagName("img");
+			console.log(els.length);
+			for (var i=0; i < els.length; ++i) {
+			  els[i].addEventListener("error", function(){
+			    console.log('YES');
+			    this.setAttribute("class", "noImg");
+  			  this.alt = 'Broken image';
+			  });
+		  }      
+      
+	};
+	Events.popstate = function() {
+	  
+		var currentSlideNumber = shower.getCurrentSlideNumber(),
+			isSlideMode = document.body.classList.contains('full') || shower.isSlideMode();
 
-	document.addEventListener('click', function(e) {
+		if (shower._getSlideTitle(currentSlideNumber)) {
+			document.title = shower._getSlideTitle(currentSlideNumber) + ' — ' + presentationTitle;
+		} else {
+			document.title = presentationTitle;
+		}
+
+		// Go to first slide, if hash id is invalid or isn't set.
+		// Same check is located in DOMContentLoaded event,
+		// but it not fires on hash change
+		if (isSlideMode && currentSlideNumber === -1) {
+			shower.go(0);
+
+		// In List mode, go to first slide only if hash id is invalid.
+		} else if (currentSlideNumber === -1 && url.hash !== '') {
+			shower.go(0);
+		}
+
+	};
+	Events.resize = function() {
+		if (shower.isSlideMode()) {
+			shower._applyTransform(shower._getTransform());
+		}
+	};
+	Events.click = function(e) {
 		var slideId = shower._getSlideIdByEl(e.target),
 			slideNumber,
 			slide;
@@ -1145,9 +1154,8 @@ window.shower = (function(window, document, undefined) {
 				slide.initTimer(shower);
 			}
 		}
-	}, false);
-
-	document.addEventListener('touchstart', function(e) {
+	};
+	Events.touchstart = function(e) {
 		var slideId = shower._getSlideIdByEl(e.target),
 			slideNumber,
 			slide,
@@ -1179,13 +1187,26 @@ window.shower = (function(window, document, undefined) {
 			}
 		}
 
-	}, false);
-
-	document.addEventListener('touchmove', function(e) {
+	};
+	Events.touchmove = function(e) {
 		if (shower.isSlideMode()) {
 			e.preventDefault();
 		}
-	}, false);
+	};
+	
+	window.addEventListener('DOMContentLoaded', Events.DOMContentLoaded, false);
+
+	window.addEventListener('popstate', Events.popstate, false);
+
+	window.addEventListener('resize', Events.resize, false);
+
+	document.addEventListener('keydown', Events.keydown, false);
+
+	document.addEventListener('click', Events.click, false);
+
+	document.addEventListener('touchstart', Events.touchstart, false);
+
+	document.addEventListener('touchmove', Events.touchmove, false);
 
 	return shower;
 
