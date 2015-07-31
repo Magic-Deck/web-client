@@ -4,7 +4,7 @@
  * 
  * Download the Ponyshow App: http://www.semanticpress.com/ponyshow
  * 
- * JS/CSS Client v1.0.8
+ * JS/CSS Client v1.0.9
  * Full source at https://github.com/Ponyshow/ponyshow
  *
  * Author: TZ Martin, <martin@semanticpress.com>
