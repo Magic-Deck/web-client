@@ -880,7 +880,7 @@ window.shower = (function(window, document, undefined) {
 
 			var next = shower._getSlideTitle(slideNumber + 1);
 			if (next) {
-				console.info('NEXT: ' + next);
+				//console.info('NEXT: ' + next);
 			}
 		}
 	};
@@ -1097,10 +1097,8 @@ window.shower = (function(window, document, undefined) {
 			run();
 			
 			var els = document.getElementsByTagName("img");
-			console.log(els.length);
 			for (var i=0; i < els.length; ++i) {
 			  els[i].addEventListener("error", function(){
-			    console.log('YES');
 			    this.setAttribute("class", "noImg");
   			  this.alt = 'Broken image';
 			  });
