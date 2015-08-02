@@ -1,4 +1,8 @@
-/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+bash+c+git+go+java+markdown+objectivec+python+swift&plugins=line-numbers+show-invisibles+autolinker+wpd+show-language+highlight-keywords */
+
+/* **********************************************
+     Begin prism-core.js
+********************************************** */
+
 var _self = (typeof window !== 'undefined')
 	? window   // if in browser
 	: (
@@ -426,7 +430,12 @@ return _self.Prism;
 if (typeof module !== 'undefined' && module.exports) {
 	module.exports = Prism;
 }
-;
+
+
+/* **********************************************
+     Begin prism-markup.js
+********************************************** */
+
 Prism.languages.markup = {
 	'comment': /<!--[\w\W]*?-->/,
 	'prolog': /<\?[\w\W]+?\?>/,
@@ -468,7 +477,12 @@ Prism.hooks.add('wrap', function(env) {
 		env.attributes['title'] = env.content.replace(/&amp;/, '&');
 	}
 });
-;
+
+
+/* **********************************************
+     Begin prism-css.js
+********************************************** */
+
 Prism.languages.css = {
 	'comment': /\/\*[\w\W]*?\*\//,
 	'atrule': {
@@ -521,7 +535,12 @@ if (Prism.languages.markup) {
 			alias: 'language-css'
 		}
 	}, Prism.languages.markup.tag);
-};
+}
+
+/* **********************************************
+     Begin prism-clike.js
+********************************************** */
+
 Prism.languages.clike = {
 	'comment': [
 		{
@@ -548,7 +567,12 @@ Prism.languages.clike = {
 	'operator': /[-+]{1,2}|!|<=?|>=?|={1,3}|&{1,2}|\|?\||\?|\*|\/|~|\^|%/,
 	'punctuation': /[{}[\];(),.:]/
 };
-;
+
+
+/* **********************************************
+     Begin prism-javascript.js
+********************************************** */
+
 Prism.languages.javascript = Prism.languages.extend('clike', {
 	'keyword': /\b(as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|false|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|true|try|typeof|var|void|while|with|yield)\b/,
 	'number': /\b-?(0x[\dA-Fa-f]+|0b[01]+|0o[0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
@@ -596,7 +620,12 @@ if (Prism.languages.markup) {
 		}
 	});
 }
-;
+
+
+/* **********************************************
+     Begin prism-bash.js
+********************************************** */
+
 Prism.languages.bash = Prism.languages.extend('clike', {
 	'comment': {
 		pattern: /(^|[^"{\\])#.*/,
@@ -628,7 +657,12 @@ Prism.languages.insertBefore('bash', 'comment', {
 	//shebang must be before comment, 'important' class from css reused
 	'important': /^#!\s*\/bin\/bash|^#!\s*\/bin\/sh/
 });
-;
+
+
+/* **********************************************
+     Begin prism-c.js
+********************************************** */
+
 Prism.languages.c = Prism.languages.extend('clike', {
 	'keyword': /\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)\b/,
 	'operator': /\-[>-]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|?\||[~^%?*\/]/
@@ -652,7 +686,12 @@ Prism.languages.insertBefore('c', 'string', {
 });
 
 delete Prism.languages.c['class-name'];
-delete Prism.languages.c['boolean'];;
+delete Prism.languages.c['boolean'];
+
+/* **********************************************
+     Begin prism-git.js
+********************************************** */
+
 Prism.languages.git = {
 	/*
 	 * A simple one line comment like in a git status command
@@ -721,7 +760,12 @@ Prism.languages.git = {
 	 */
 	'commit_sha1': /^commit \w{40}$/m
 };
-;
+
+
+/* **********************************************
+     Begin prism-go.js
+********************************************** */
+
 Prism.languages.go = Prism.languages.extend('clike', {
 	'keyword': /\b(break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,
 	'builtin': /\b(bool|byte|complex(64|128)|error|float(32|64)|rune|string|u?int(8|16|32|64|)|uintptr|append|cap|close|complex|copy|delete|imag|len|make|new|panic|print(ln)?|real|recover)\b/,
@@ -731,7 +775,12 @@ Prism.languages.go = Prism.languages.extend('clike', {
 	'string': /("|'|`)(\\?.|\r|\n)*?\1/
 });
 delete Prism.languages.go['class-name'];
-;
+
+
+/* **********************************************
+     Begin prism-java.js
+********************************************** */
+
 Prism.languages.java = Prism.languages.extend('clike', {
 	'keyword': /\b(abstract|continue|for|new|switch|assert|default|goto|package|synchronized|boolean|do|if|private|this|break|double|implements|protected|throw|byte|else|import|public|throws|case|enum|instanceof|return|transient|catch|extends|int|short|try|char|final|interface|static|void|class|finally|long|strictfp|volatile|const|float|native|super|while)\b/,
 	'number': /\b0b[01]+\b|\b0x[\da-f]*\.?[\da-fp\-]+\b|\b\d*\.?\d+[e]?[\d]*[df]\b|\b\d*\.?\d+\b/i,
@@ -739,7 +788,12 @@ Prism.languages.java = Prism.languages.extend('clike', {
 		pattern: /(^|[^\.])(?:\+=|\+\+?|-=|--?|!=?|<{1,2}=?|>{1,3}=?|==?|&=|&&?|\|=|\|\|?|\?|\*=?|\/=?|%=?|\^=?|:|~)/m,
 		lookbehind: true
 	}
-});;
+});
+
+/* **********************************************
+     Begin prism-markdown.js
+********************************************** */
+
 Prism.languages.markdown = Prism.languages.extend('markup', {});
 Prism.languages.insertBefore('markdown', 'prolog', {
 	'blockquote': {
@@ -861,13 +915,23 @@ Prism.languages.insertBefore('markdown', 'prolog', {
 Prism.languages.markdown['bold'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
 Prism.languages.markdown['italic'].inside['url'] = Prism.util.clone(Prism.languages.markdown['url']);
 Prism.languages.markdown['bold'].inside['italic'] = Prism.util.clone(Prism.languages.markdown['italic']);
-Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.languages.markdown['bold']);;
+Prism.languages.markdown['italic'].inside['bold'] = Prism.util.clone(Prism.languages.markdown['bold']);
+
+/* **********************************************
+     Begin prism-objectivec.js
+********************************************** */
+
 Prism.languages.objectivec = Prism.languages.extend('c', {
 	'keyword': /(\b(asm|typeof|inline|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|in|self|super)\b)|((?=[\w|@])(@interface|@end|@implementation|@protocol|@class|@public|@protected|@private|@property|@try|@catch|@finally|@throw|@synthesize|@dynamic|@selector)\b)/,
 	'string': /(?:("|')([^\n\\\1]|\\.|\\\r*\n)*?\1)|(@"([^\n\\"]|\\.|\\\r*\n)*?")/,
 	'operator': /[-+]{1,2}|!=?|<{1,2}=?|>{1,2}=?|\->|={1,2}|\^|~|%|&{1,2}|\|?\||\?|\*|\/|@/
 });
-;
+
+
+/* **********************************************
+     Begin prism-python.js
+********************************************** */
+
 Prism.languages.python= { 
 	'comment': {
 		pattern: /(^|[^\\])#.*?(\r?\n|$)/,
@@ -883,7 +947,12 @@ Prism.languages.python= {
 	'number' : /\b-?(0[bo])?(?:(\d|0x[a-f])[\da-f]*\.?\d*|\.\d+)(?:e[+-]?\d+)?j?\b/i,
 	'operator' : /[-+]|<=?|>=?|!|={1,2}|&{1,2}|\|?\||\?|\*|\/|~|\^|%|\b(or|and|not)\b/,
 	'punctuation' : /[{}[\];(),.:]/
-};;
+};
+
+/* **********************************************
+     Begin prism-swift.js
+********************************************** */
+
 // issues: nested multiline comments, highlighting inside string interpolations
 Prism.languages.swift = Prism.languages.extend('clike', {
 	'keyword': /\b(as|associativity|break|case|catch|class|continue|convenience|default|defer|deinit|didSet|do|dynamic|dynamicType|else|enum|extension|fallthrough|final|for|func|get|guard|if|import|in|infix|init|inout|internal|is|lazy|left|let|mutating|new|none|nonmutating|operator|optional|override|postfix|precedence|prefix|private|Protocol|public|repeat|required|rethrows|return|right|safe|self|Self|set|static|struct|subscript|super|switch|throws?|try|Type|typealias|unowned|unsafe|var|weak|where|while|willSet|__COLUMN__|__FILE__|__FUNCTION__|__LINE__)\b/,
@@ -892,7 +961,12 @@ Prism.languages.swift = Prism.languages.extend('clike', {
 	'atrule': /@\b(IBOutlet|IBDesignable|IBAction|IBInspectable|class_protocol|exported|noreturn|NSCopying|NSManaged|objc|UIApplicationMain|auto_closure)\b/,
 	'builtin': /\b([A-Z]\S+|abs|advance|alignof|alignofValue|assert|contains|count|countElements|debugPrint|debugPrintln|distance|dropFirst|dropLast|dump|enumerate|equal|filter|find|first|getVaList|indices|isEmpty|join|last|lazy|lexicographicalCompare|map|max|maxElement|min|minElement|numericCast|overlaps|partition|prefix|print|println|reduce|reflect|reverse|sizeof|sizeofValue|sort|sorted|split|startsWith|stride|strideof|strideofValue|suffix|swap|toDebugString|toString|transcode|underestimateCount|unsafeBitCast|withExtendedLifetime|withUnsafeMutablePointer|withUnsafeMutablePointers|withUnsafePointer|withUnsafePointers|withVaList)\b/
 });
-;
+
+
+/* **********************************************
+     Begin prism-line-numbers.js
+********************************************** */
+
 Prism.hooks.add('after-highlight', function (env) {
 	// works only for <code> wrapped inside <pre> (not inline)
 	var pre = env.element.parentNode;
@@ -930,7 +1004,12 @@ Prism.hooks.add('after-highlight', function (env) {
 
 	env.element.appendChild(lineNumbersWrapper);
 
-});;
+});
+
+/* **********************************************
+     Begin prism-show-invisibles.js
+********************************************** */
+
 (function(){
 
 if(!window.Prism) {
@@ -947,7 +1026,12 @@ for (var language in Prism.languages) {
 }
 
 })();
-;
+
+
+/* **********************************************
+     Begin prism-autolinker.js
+********************************************** */
+
 (function(){
 
 if (!self.Prism) {
@@ -1014,7 +1098,12 @@ Prism.hooks.add('wrap', function(env) {
 });
 
 })();
-;
+
+
+/* **********************************************
+     Begin prism-titanium.js
+********************************************** */
+
 (function(){
 
 if (!self.Prism) {
@@ -1077,11 +1166,11 @@ Prism.hooks.add('wrap', function(env) {
 	    || (env.type == 'attr-name' && env.content.indexOf('data-') != 0)
 	    ) && env.content.indexOf('<') === -1
 	) {
-		var searchURL = 'w/index.php?fulltext&search=';
+		var searchURL = '#!/api/Titanium.UI.';
 		
 		env.tag = 'a';
 		
-		var href = 'http://docs.webplatform.org/';
+		var href = 'http://docs.appcelerator.com/platform/latest/';
 		
 		if (env.language == 'css') {
 			href += 'wiki/css/'
@@ -1177,40 +1266,4 @@ function getLanguage(tag) {
 	return null;
 }
 
-})();;
-(function(){
-
-if (!self.Prism) {
-	return;
-}
-
-var Languages = {
-	'csharp': 'C#',
-	'cpp': 'C++'
-};
-Prism.hooks.add('before-highlight', function(env) {
-	var pre = env.element.parentNode;
-	if (!pre || !/pre/i.test(pre.nodeName)) {
-		return;
-	}
-	var language = Languages[env.language] || env.language;
-	pre.setAttribute('data-language', language);
-});
-
 })();
-;
-(function(){
-
-if (!self.Prism) {
-	return;
-}
-
-Prism.hooks.add('wrap', function(env) {
-	if (env.type !== "keyword") {
-		return;
-	}
-	env.classes.push('keyword-' + env.content);
-});
-
-})();
-;
