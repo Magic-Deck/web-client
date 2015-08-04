@@ -75,6 +75,23 @@ table tbody {
 	-webkit-transform:translateX(-50%);
 }
 
+/*
+
+	Default Styles
+
+*/
+
+.slide>div {
+	position: absolute;
+	left: 0;
+	overflow:hidden;
+}
+
+/*
+
+	Image styling
+
+*/
 img.fit {
 	max-height: 100%;
 	max-width:100%;
@@ -108,6 +125,7 @@ img.right + ul > li, img.right + ol > li {margin-bottom: 2%;}
 img.right + a {display: -webkit-box;clear: both;}
 img.left + p + a {display: -webkit-box;clear: both;font-size:15px;}
 img.left + img.right + ul, img.left + img.right + ol, img.left + img.right + table {clear:both}
+
 
 /*
  Support two column layout for multiple lists 
