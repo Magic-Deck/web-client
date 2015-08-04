@@ -1,24 +1,24 @@
 // Override console.log gracefully
 // see: http://stackoverflow.com/questions/9164976/why-do-i-get-maximum-call-stack-size-exceeded-when-i-override-console-log
-console.log = function (log) {
-    return function () {
-        var args = Array.prototype.slice.call(arguments);
-        args.unshift(new Date().getTime().toString().substr(7, 6)); // Push millis as first argument
-        if (window.hasOwnProperty('postMessageToHost')) {
-          window.postMessageToHost(JSON.stringify({event:'WKWebViewLog',data:args.join(' - ')}));
-        } else {
-          log.apply(console, args);
-        }
-    };
-}(console.log);
+// console.log = function (log) {
+//     return function () {
+//         var args = Array.prototype.slice.call(arguments);
+//         args.unshift(new Date().getTime().toString().substr(7, 6)); // Push millis as first argument
+//         if (window.hasOwnProperty('postMessageToHost')) {
+//           window.postMessageToHost(JSON.stringify({event:'WKWebViewLog',data:args.join(' - ')}));
+//         } else {
+//           log.apply(console, args);
+//         }
+//     };
+// }(console.log);
 
 
 function fireEvent(_msg) {  
-  if (window.hasOwnProperty('postMessageToHost')) {
-    window.postMessageToHost(JSON.stringify(_msg));
-  } else {
-    console.log({fireEvent:_msg.event,data:_msg.data});
-  }
+  // if (window.hasOwnProperty('postMessageToHost')) {
+  //   window.postMessageToHost(JSON.stringify(_msg));
+  // } else {
+  //   console.log({fireEvent:_msg.event,data:_msg.data});
+  // }
 }
 
 function isElementInViewport(el) {
@@ -44,15 +44,15 @@ function getPosition(e) {
 }
 
 
-window.onerror = function(errorMsg, url, lineNumber) {
-  console.log(url);
-  var str = errorMsg + ' Script: ' + url + ' Line: ' + lineNumber;
-  if (window.hasOwnProperty('postMessageToHost')) {
-    window.postMessageToHost(JSON.stringify({event:'WKWebViewError',data:str}));
-  } else {
-    console.log(str);
-  }
-};
+// window.onerror = function(errorMsg, url, lineNumber) {
+//   console.log(url);
+//   var str = errorMsg + ' Script: ' + url + ' Line: ' + lineNumber;
+//   if (window.hasOwnProperty('postMessageToHost')) {
+//     window.postMessageToHost(JSON.stringify({event:'WKWebViewError',data:str}));
+//   } else {
+//     console.log(str);
+//   }
+// };
 
 var exampleSocket = new WebSocket("ws://127.0.0.1:8081");
 exampleSocket.onmessage = function (event) {
