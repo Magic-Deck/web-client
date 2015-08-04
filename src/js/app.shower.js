@@ -944,7 +944,7 @@ window.shower = (function(window, document, undefined) {
 			slide = shower.slideList[ currentSlideNumber !== -1 ? currentSlideNumber : 0 ],
 			slideNumber;
     
-    	//fireEvent({event:'keydown',data:e.which});
+    fireEvent({event:'keydown',data:e.which});
     
 		switch (e.which) {
 		  
