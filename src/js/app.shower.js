@@ -1022,7 +1022,6 @@ window.shower = (function(window, document, undefined) {
 			break;
 
 			case 33: // PgUp
-				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 				if (shower.disabledKeys.hasOwnProperty('33')) { break; }
 				e.preventDefault();
 				shower._turnPreviousSlide();
@@ -1039,7 +1038,6 @@ window.shower = (function(window, document, undefined) {
 			break;
 
 			case 34: // PgDown
-				if (e.altKey || e.ctrlKey || e.metaKey) { return; }
 				if (shower.disabledKeys.hasOwnProperty('34')) { break; }
 				e.preventDefault();
 				shower._turnNextSlide();
